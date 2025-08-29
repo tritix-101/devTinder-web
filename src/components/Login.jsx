@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate =useNavigate();
+
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -22,11 +24,12 @@ const Login = () => {
       );
      // console.log(res.data);
       dispatch(addUser(res.data));
-      return navigate("/")
+      return navigate("/");
     } catch (err) {
-      console.log(err.message);
+      setError(err?.response?.data || "Something went wrong");
     }
   };
+
   return (
     <>
       <div className="flex items-center justify-center my-8">
@@ -69,6 +72,7 @@ const Login = () => {
             </div>
 
             {/* Login Button */}
+            <p className="text-red-500">{error}</p>
             <div className="form-control mt-6 text-center">
               <button className="btn btn-primary" onClick={handleLogin}>
                 Login
