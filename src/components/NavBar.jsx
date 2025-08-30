@@ -25,7 +25,9 @@ const NavBar = () => {
     <>
       <div className="navbar bg-neutral shadow-sm">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost text-xl">👩‍💻DevTinder</Link>
+          <Link to="/" className="btn btn-ghost text-xl">
+            👩‍💻DevTinder
+          </Link>
         </div>
         <div className="flex gap-2">
           {user && (
@@ -60,6 +62,9 @@ const NavBar = () => {
                 </li>
                 <li>
                   <Link to="/connections">Connections</Link>
+                </li>
+                <li>
+                  <Link to="/requests">Requests</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>
