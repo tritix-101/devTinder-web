@@ -10,11 +10,12 @@ const Requests = () => {
 
   const reviewRequest = async (status, _id) => {
     try {
-      const res = axios.post(
+      const res = await axios.post(
         BASE_URL + "/request/review/" + status + "/" + _id,
         {},
         { withCredentials: true }
       );
+      
       dispatch(removeRequest(_id));
     } catch (err) {}
   };
@@ -48,7 +49,7 @@ const Requests = () => {
 
         return (
           <div
-            key={_id}
+            key={request._id}
             className=" flex justify-between items-center m-4 p-4 rounded-lg bg-base-300 w-2/3 mx-auto"
           >
             <div>
